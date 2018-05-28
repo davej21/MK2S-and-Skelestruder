@@ -1412,6 +1412,15 @@ void lcd_preheat_flex()
   setWatch(); // heater sanity check timer
 }
 
+void lcd_preheat_farm_nozzle()
+{
+  setTargetHotend0(FARM_PREHEAT_HOTEND_TEMP);
+  setTargetBed(FARM_PREHEAT_HPB_TEMP);
+  fanSpeed = 0;
+  lcd_return_to_status();
+  setWatch(); // heater sanity check timer
+}
+
 
 void lcd_cooldown()
 {
