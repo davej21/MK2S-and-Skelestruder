@@ -2157,7 +2157,7 @@ void gcode_M701() {
 	custom_message_type = 2;
 
 	lcd_setstatuspgm(MSG_LOADING_FILAMENT);
-	current_position[E_AXIS] += 70;
+	current_position[E_AXIS] += 60;
 	plan_buffer_line(current_position[X_AXIS], current_position[Y_AXIS], current_position[Z_AXIS], current_position[E_AXIS], 400 / 60, active_extruder); //fast sequence
 
 	current_position[E_AXIS] += 25;
@@ -5740,7 +5740,7 @@ case 404:  //M404 Enter the nominal filament width (3mm, 1.75mm ) N<3.0> or disp
 		gcode_M701();
 	}
 	break;
-	case 702:
+	    case 702: //M702: unload filament
 	{
 #ifdef SNMM
 		if (code_seen('U')) {
@@ -5756,7 +5756,7 @@ case 404:  //M404 Enter the nominal filament width (3mm, 1.75mm ) N<3.0> or disp
 		custom_message = true;
 		custom_message_type = 2;
 		lcd_setstatuspgm(MSG_UNLOADING_FILAMENT); 
-		current_position[E_AXIS] -= 80;
+		current_position[E_AXIS] -= 63;
 		plan_buffer_line(current_position[X_AXIS], current_position[Y_AXIS], current_position[Z_AXIS], current_position[E_AXIS], 7000 / 60, active_extruder);
 		st_synchronize();
 		lcd_setstatuspgm(WELCOME_MSG);
